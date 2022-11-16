@@ -1,0 +1,236 @@
+*
+{
+    box-sizing: border-box;
+  }
+.container {
+    margin-top: 10px;
+    background-color: #219ebc;
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+#header #right {
+    /* width: 650px; */
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#header #logout-div {
+    display: none;
+}
+
+#header #login-div {
+margin-top: 10px;;
+}
+#errormessage {
+    color: red;
+}
+
+#logoutBtn {
+    background: #fb8500;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#loginBtn {
+    background: #fb8500;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+#logo{
+    margin-top: -12px;
+}
+#musicContent{
+    margin-top: 20px;
+    background: #8ecae6;
+}
+#playListContent{
+    margin-top: 20px;
+    background: #8ecae6;
+    margin-bottom: 20px;
+}
+.btn-action{
+    background: #fb8500;
+    color:white
+}
+
+.btn-action-remove{
+    background:#e63946;
+    color:white
+}
+#welcomeTitle{
+    margin-top: 100px;
+    text-align: center;
+}
+#close{
+    position: absolute;
+    right: 8px;
+    top: 0px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+
+/* music player css */  
+  #outer-container {
+    background-image: linear-gradient(
+      0deg,
+      #ffb703,
+      #fb8500
+    );
+    height: 20vh;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    /* margin: 50px; */
+    display:none;
+    position: sticky;
+    bottom: -25px;
+    width: 100%;
+  }
+  
+  /* styling the outer music container */
+  .music-container {
+    background-color: #efefef;
+    box-shadow: inset -1px -1px 5px rgba(33,33,33, 0.5), inset 1px 1px 5px rgba(33,33,33,0.5); 
+    display: flex;
+    padding: 20px 30px;
+    position: relative;
+    /* margin: 100px 0; */
+    /* margin-top: 85px; */
+    z-index: 10;
+  }
+  
+  .img-container {
+    position: relative;
+    width: 110px;
+  }
+  
+  /* styling the image to look like a disc by placing a small circle in it*/
+  .img-container::after {
+    content: '';
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, 50%);
+  }
+  
+  /* using animation to make the image rotate continiously when music is playing */
+  .img-container img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 110px;
+    width: inherit;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: rotate 3s linear infinite;
+  
+    animation-play-state: paused;
+  }
+  
+  /* making sure the image rotates only when the music is playing */
+  .music-container.play .img-container img {
+    animation-play-state: running;
+  }
+  
+  /* creating the animation keyframe and setting the image to rotate 360 degrees continiously */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  /* styling the navigation buttons */
+  .action-btn {
+    border: 0;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+  }
+  
+  .action-btn.action-btn-big {
+    font-size: 30px;
+    outline: none;
+  }
+  
+  .action-btn:focus {
+    outline: 0;
+  }
+  
+  /* styling the music-info div by placing it under the music container */
+  .music-info {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: calc(100% - 40px);
+    padding: 10px 10px 10px 150px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    z-index: 0;
+  }
+  
+  /* making the music info pop up when the music playing using the transform property*/
+  .music-container.play .music-info {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  
+  .music-info h4 {
+    margin: 0;
+    margin-left: -90px;
+  }
+  
+  /* styling the song progress container */
+  .progress-container {
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+  }
+  
+  /* styling the actual progress bar and making it flow along with the song*/
+  .progress {
+    background-color: #fe8daa;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+  
