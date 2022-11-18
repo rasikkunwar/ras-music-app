@@ -23,6 +23,9 @@
             <div id="left">
                 <img id="logo" src="./image/logo.png" alt="Logo" height="85px" />
             </div>
+            <div class="center">
+                <input id="searchMusic" type="text" placeholder="Search Music By Title">
+            </div>
             <div id="right">
                 <div id="login-div">
                     <input id="username" type="text" placeholder="username">
@@ -34,12 +37,11 @@
                     <button class="btn" id="logoutBtn">Logout</button>
                 </div>
             </div>
-
-
         </header>
 
-        <h4 id="musicTitle">Songs</h4>
-        <input id="searchMusic" type="text" placeholder="Search Music By Title...">
+        <div class="main-music">
+        <h4 id="welcomeTitle">WELCOME TO RASMUSIC <span id="loggedInUser"></span></h4>
+        <h5 id="musicTitle">Songs You May Interest In</h5>
         <div id="musicContent">
             <table class="table table-bordered">
                 <thead>
@@ -56,7 +58,7 @@
             </table>
         </div>
 
-        <h4 id="playListTitle">My Playlists</h4>
+        <h5 id="playListTitle">Your Playlists</h5>
         <div id="playListContent">
             <table class="table table-bordered">
                 <thead>
@@ -71,9 +73,11 @@
                 </tbody>
             </table>
         </div>
-        <h4 id="welcomeTitle">WELCOME TO RASMUSIC</h4>
+        </div>
     </div>
 
+
+    <!-- music container -->
     <div id="outer-container">
         <span id="close"><i class="fa-solid fa-close"></i></span>
         <div class="music-container" id="music-container">
@@ -82,15 +86,15 @@
                 <div class="progress-container" id="progress-container">
                     <div class="progress" id="progress"></div>
                 </div>
+                <div class="music-duration">
+                    <span id="current-duration">0:00/0:00</span>
+                </div>
             </div>
             <audio src="" id="audio"></audio>
             <div class="img-container">
                 <img src="./image/logo.png" alt="music-cover" id="cover" />
             </div>
             <div class="navigation">
-                <button id="shuffle" class="action-btn action-btn-big">
-                    <i class="fas fa-shuffle"></i>
-                </button>
                 <button id="prev" class="action-btn">
                     <i class="fas fa-backward"></i>
                 </button>
@@ -101,8 +105,8 @@
                     <i class="fas fa-forward"></i>
                 </button>
 
-                <button id="repeat" class="action-btn action-btn-big">
-                    <i class="fas fa-repeat"></i>
+                <button id="music-action-btn" class="action-btn action-btn-big">
+                    <i id="music-action-icon" class="fas fa-repeat"></i>
                 </button>
             </div>
         </div>
