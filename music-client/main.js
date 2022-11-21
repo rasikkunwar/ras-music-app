@@ -78,16 +78,23 @@ async function fetchMusic(search = null) {
     const tableBody = document.getElementById("tableMusicBody");
     innerTableBody = '';
     let index = 1;
-    songs.forEach(song => {
-        innerTableBody += `<tr>
+    if (songs.length) {
+        songs.forEach(song => {
+            innerTableBody += `<tr>
                 <th scope="row">${index}</th>
                 <td>${song.title}</td>
                 <td>${song.releaseDate}</td>
                 <td><button class="btn btn-action btn-sm cursor-pointer" onClick="addToPlayList('${song.id}')" title="Add to playlist"><i class="fa-solid fa-plus"></i></button>
                 </td>
               </tr>`
-        index++;
-    })
+            index++;
+        })
+    }
+    else {
+        innerTableBody += `<tr>
+    <th scope="row" colspan="4" style="text-align:center">No songs found</th>
+  </tr>`
+    }
     tableBody.innerHTML = innerTableBody
 
 
@@ -136,12 +143,12 @@ async function fetchPlayList() {
         musicActionIcon.classList.remove('fas', 'fa-repeat')
         musicActionIcon.classList.add('fa-regular', 'fa-1');
     }
-    else if(playType === 'SHUFFLE') {
+    else if (playType === 'SHUFFLE') {
         musicActionIcon.classList.remove('fas', 'fa-repeat')
         musicActionIcon.classList.remove('fa-regular', 'fa-1')
         musicActionIcon.classList.add('fas', 'fa-shuffle');
     }
-    else{
+    else {
         musicActionIcon.classList.remove('fa-regular', 'fa-1')
         musicActionIcon.classList.remove('fas', 'fa-shuffle')
         musicActionIcon.classList.add('fas', 'fa-repeat')
